@@ -1,0 +1,8 @@
+.env
+.makefun-kit/
+out/
+node_modules/
+test-results/
+playwright-report/
+*.log
+.makefun-kit-last-run.log

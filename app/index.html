@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#143b37">
+  <meta name="description" content="An offline GTA VI PS5 trophy field guide, tracker, and platinum roadmap.">
+  <title>Leonida Waypoint, GTA VI trophy field guide</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+<style id="gesso-text-wrap">h1,h2,h3{text-wrap:balance}p,li,figcaption,blockquote{text-wrap:pretty}</style>
+<style id="gesso-font-smoothing">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to guide</a>
+  <header class="masthead">
+    <a class="brand" href="#tracker" aria-label="Leonida Waypoint home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><b>LEONIDA</b><small>WAYPOINT · OFFLINE TROPHY GUIDE</small></span>
+    </a>
+    <div class="masthead-right"><span class="offline-state"><i></i> OFFLINE READY</span><button class="icon-button" id="help-button" type="button" aria-label="About this guide">?</button></div>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <h1 id="page-title">The road to Platinum.</h1>
+        <p class="dek">GTA VI · 55 PS5 trophies · Progress saved in this browser</p>
+      </div>
+      <div class="progress-card" aria-label="Trophy progress">
+        <div class="progress-top"><span>TROPHIES EARNED</span><b id="progress-label">0 / 55</b></div>
+        <div class="progress-track"><span id="progress-fill"></span></div>
+        <div class="grade-counts" id="grade-counts"></div>
+      </div>
+    </section>
+
+    <nav class="primary-nav" aria-label="Guide sections" role="tablist">
+      <button class="nav-tab is-active" id="tab-tracker" role="tab" aria-selected="true" aria-controls="panel-tracker" data-panel="tracker">Tracker</button>
+      <button class="nav-tab" id="tab-roadmap" role="tab" aria-selected="false" aria-controls="panel-roadmap" data-panel="roadmap">Roadmap</button>
+      <button class="nav-tab" id="tab-missables" role="tab" aria-selected="false" aria-controls="panel-missables" data-panel="missables">Missable watch <span class="nav-alert">1?</span></button>
+      <button class="nav-tab" id="tab-sources" role="tab" aria-selected="false" aria-controls="panel-sources" data-panel="sources">Sources</button>
+      <span class="nav-spacer"></span>
+      <label class="spoiler-switch"><input id="spoiler-toggle" type="checkbox" checked><span class="switch-ui" aria-hidden="true"></span><span>Hide story spoilers</span></label>
+    </nav>
+
+    <section class="panel is-visible" id="panel-tracker" role="tabpanel" aria-labelledby="tab-tracker">
+      <div class="toolbar">
+        <div class="search-wrap"><span class="search-icon" aria-hidden="true"></span><input id="search" type="search" aria-label="Search trophies" placeholder="Find a trophy or requirement" autocomplete="off"><kbd>/</kbd></div>
+        <label class="select-wrap"><span class="sr-only">Grade</span><select id="grade-filter"><option value="all">Every grade</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+        <label class="select-wrap"><span class="sr-only">Progress</span><select id="status-filter"><option value="all">All progress</option><option value="open">Not earned</option><option value="earned">Earned</option></select></label>
+        <div class="transfer-actions"><button class="quiet-button" id="export-button" type="button">Export progress</button><label class="quiet-button import-button" for="import-file">Import file</label><input class="sr-only" id="import-file" type="file" accept="application/json,.json"></div>
+      </div>
+      <div class="filter-row" id="kind-filters" aria-label="Filter by category">
+        <button class="filter-chip is-active" data-kind="all" type="button">All <span id="all-count">55</span></button>
+        <button class="filter-chip" data-kind="story" type="button">Story <span></span></button>
+        <button class="filter-chip" data-kind="missable" type="button">Missable <span class="chip-alert">1?</span></button>
+        <button class="filter-chip" data-kind="collectibles" type="button">Collectibles <span></span></button>
+        <button class="filter-chip" data-kind="activities" type="button">Activities <span></span></button>
+        <button class="filter-chip" data-kind="misc" type="button">Other <span></span></button>
+        <span class="filter-summary" id="result-count">55 showing</span>
+      </div>
+      <div class="tracker-grid">
+        <section class="list-panel" aria-label="Trophy checklist">
+          <div class="list-heading"><span>THE REGISTER</span><span id="list-progress">0 COMPLETE</span></div>
+          <div id="trophy-list" class="trophy-list" role="list"></div>
+          <p class="no-results" id="no-results" hidden>No matching marks. Clear a filter or try another search.</p>
+        </section>
+        <aside class="detail-panel" id="detail-panel" aria-live="polite" aria-label="Selected trophy guide"></aside>
+      </div>
+      <div class="small-print"><span>Saved in this browser</span><span id="save-status">READY</span><span class="small-print-line"></span><span>55 TROPHIES · 1 PLATINUM · 2 GOLD · 6 SILVER · 46 BRONZE</span></div>
+    </section>
+
+    <section class="panel" id="panel-roadmap" role="tabpanel" aria-labelledby="tab-roadmap" hidden>
+      <div class="section-heading"><div><h2>Platinum route</h2></div><p>Bank progress as you play. The trophy register contains no confirmed online requirements; leave the potentially missable Chapter 1 meditation for the early sweep.</p></div>
+      <div id="roadmap-content" class="roadmap-grid"></div>
+      <div class="roadmap-foot"><span class="route-mark">FIELD NOTE</span><p>Route order is a convenience, not a requirement. Keep a separate manual save before a chapter finale if you want a recovery point.</p></div>
+    </section>
+
+    <section class="panel" id="panel-missables" role="tabpanel" aria-labelledby="tab-missables" hidden>
+      <div class="section-heading"><div><h2>Missable watch</h2></div><p>One trophy has a documented early-game risk. Its exact requirement is still disputed in launch guides, so the safest route is to do it anyway.</p></div>
+      <article class="risk-card">
+        <div class="risk-index"><span>AT RISK · POSSIBLE</span></div>
+        <div class="risk-body"><h3>Positive Mental Attitude</h3><p class="risk-window">Chapter 1 · after <strong>Down to Earth</strong> · before starting <strong>Tourist Trap</strong></p><p>When Lucia offers meditation at Jason’s home, follow her onto the balcony and accept. The spot is not marked like the regular meditation sites. Public guides disagree about whether this single optional session is required for the trophy; it disappears after Chapter 1 either way.</p><a class="source-link" href="https://outputlag.com/guides/gta-6-missables/" target="_blank" rel="noopener noreferrer">Read the missable breakdown</a></div>
+        <label class="risk-check"><input type="checkbox" id="risk-done"><span>Logged</span></label>
+      </article>
+      <div class="safety-grid"><article><h3>Before a chapter finale</h3><p>A separate save gives you a way back if a one-time prompt was skipped. This is a general safeguard, not a claim that every chapter hides a missable trophy.</p></article><article><h3>About the list</h3><p>The current PS5 register contains story, activity, exploration, and side-content trophies. The cited launch guides describe the list as offline and single-player.</p></article></div>
+      <p class="source-footnote">Risk flag sources: <a href="https://outputlag.com/guides/gta-6-missables/" target="_blank" rel="noopener noreferrer">Output Lag · Missables</a> and <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/" target="_blank" rel="noopener noreferrer">PowerPyx · Trophy roadmap</a>. Recheck both sources if the game is patched.</p>
+    </section>
+
+    <section class="panel" id="panel-sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
+      <div class="section-heading"><div><h2>Source shelf</h2></div><p>Each guide links the references used for its practical notes. Trophy names, descriptions, and grades are kept as published in the PS5 list.</p></div>
+      <div id="source-shelf" class="source-shelf"></div>
+      <p class="source-footnote">The page itself makes no outbound requests. Links open only when selected. Article text and game imagery are not bundled into this guide.</p>
+    </section>
+
+    <footer class="site-footer"><span>LEONIDA WAYPOINT</span><span>Independent fan guide · no game artwork used</span><span>OFFLINE BY DESIGN</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
